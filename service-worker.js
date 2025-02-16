@@ -6,7 +6,7 @@ const PRECACHE_URLS = [
   'index.html',
   './', // Alias for index.html
   'video-js.css',
-  '../../styles/main.css',
+  'ICL-CONTAINER.css',
   'video.js'
 ];
 
