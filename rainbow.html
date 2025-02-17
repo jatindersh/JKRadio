@@ -10,6 +10,32 @@
 <link rel="stylesheet" href="video-js.css">
 <script src="video.js"></script>
 
+ <style>
+        .button {
+            margin-right: 10px; /* Adjust this value to increase or decrease space */
+			 background-color: black;
+            color: white; /* Text color */
+            border: 1px solid yellow;
+            border-radius: 15px; /* Adjust this value for more or less roundness */
+            padding: 5px 20px; /* Adjust for button size */
+            font-size: 15px;
+            cursor: pointer;
+			width: 80px;
+			align-content: center;
+        }
+    </style>
+     <script>
+        function clearCache() {
+            if (confirm("This action will clear your browser's cache. Proceed?")) {
+                location.reload(true);
+            }
+        }
+    </script>
+<script>
+        function refreshPage() {
+            window.location.reload();
+        }
+    </script>
  
 <style>
  #rcorners 	{
@@ -161,7 +187,7 @@
 <body id="rcorners1" class="ICL-CONTAINER">
                
  <div>
-<p id="rcorners" style="font-size:25px; ">RADIO <br>Air Rainbow 103.4 FM</p>
+<p id="rcorners" style="font-size:25px; ">RADIO <br>Air Rainbow FM</p>
 
 <br> 
    <table id="rcorners2"><tr><td>
@@ -238,9 +264,20 @@ document.getElementById("datee").innerHTML = d.toDateString();
             </ul>
         </li>
        </ul>
-<table><tr><td><img src="image/jkpic1.jpg" alt="JKRadio"></td></tr>
- <tr><td>JATINDER</td></tr></table>
-  
+<table>
+
+ <tr><td rowspan="2"> 
+<button class="button" onclick="refreshPage()"><img src="image/refresh.jpg" width="35" height="35"  alt="Refresh"></button>   
+</td>
+<td><img src="image/jkpic1.jpg" width="70" height="80"  alt="JKRadio">
+</td>
+<td rowspan="2"><button  class="button" onclick="clearCache()"><img src="image/clear.jpg" width="35" height="35"  alt="Clear Cache"></button>  
+</td></tr>
+<tr>
+<td>JATINDER
+</td>
+</tr>	
+</table>
 </div>
 		 
  <script>

@@ -4,14 +4,18 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JKRadio</title>
- 
+ <link rel="stylesheet" href="ICL-CONTAINER.css">
+ <link rel="shortcut icon" href="image/mine.ico" type="image/x-icon">  
+<link rel="stylesheet" href="video-js.css">
+<script src="video.js"></script>
+
     <style>
         .button {
             margin-right: 10px; /* Adjust this value to increase or decrease space */
 			 background-color: black;
             color: white; /* Text color */
             border: 1px solid yellow;
-            border-radius: 30px; /* Adjust this value for more or less roundness */
+            border-radius: 15px; /* Adjust this value for more or less roundness */
             padding: 5px 20px; /* Adjust for button size */
             font-size: 15px;
             cursor: pointer;
@@ -19,17 +23,19 @@
 			align-content: center;
         }
     </style>
+     <script>
+        function clearCache() {
+            if (confirm("This action will clear your browser's cache. Proceed?")) {
+                location.reload(true);
+            }
+        }
+    </script>
 <script>
         function refreshPage() {
             window.location.reload();
         }
     </script>
- <link rel="stylesheet" href="ICL-CONTAINER.css">
  
-   <link rel="shortcut icon" href="image/mine.ico" type="image/x-icon">  
-<link rel="stylesheet" href="video-js.css">
-<script src="video.js"></script>
-
  <style>
  #rcorners 	{
   	 border-radius: 10px 25px;
@@ -256,33 +262,21 @@ document.getElementById("datee").innerHTML = d.toDateString();
        </ul>
 <table>
 
- <tr><td>   
+ <tr><td rowspan="2"> 
+<button class="button" onclick="refreshPage()"><img src="image/refresh.jpg" width="35" height="35"  alt="Refresh"></button>   
 </td>
-<td><img src="image/jkpic1.jpg" alt="JKRadio">
+<td><img src="image/jkpic1.jpg" width="70" height="80"  alt="JKRadio">
 </td>
-<td> 
+<td rowspan="2"><button  class="button" onclick="clearCache()"><img src="image/clear.jpg" width="35" height="35"  alt="Clear Cache"></button>  
 </td></tr>
 <tr>
-<td>   
-</td>
 <td>JATINDER
 </td>
-<td>
-</td></tr>	
+</tr>	
 </table>
-  
-
- <br>
-
+   <br>
+ 
    
-   
-    <script>
-        function clearCache() {
-            if (confirm("This action will clear your browser's cache. Proceed?")) {
-                location.reload(true);
-            }
-        }
-    </script>
   </div>
 		 
  <script>
