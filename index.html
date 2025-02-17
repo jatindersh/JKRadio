@@ -4,6 +4,25 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JKRadio</title>
+ 
+    <style>
+        .button {
+            margin-right: 10px; /* Adjust this value to increase or decrease space */
+			 background-color: black;
+            color: white; /* Text color */
+            border: 2px solid yellow;
+            border-radius: 30px; /* Adjust this value for more or less roundness */
+            padding: 5px 20px; /* Adjust for button size */
+            font-size: 16px;
+            cursor: pointer;
+			width: 150px;
+        }
+    </style>
+<script>
+        function refreshPage() {
+            window.location.reload();
+        }
+    </script>
  <link rel="stylesheet" href="ICL-CONTAINER.css">
  
    <link rel="shortcut icon" href="image/mine.ico" type="image/x-icon">  
@@ -16,7 +35,7 @@
   	 border-radius: 10px 25px;
  	 border: 2px solid #73AD21;
  	 padding: 1px;
- 	 width: 255px; 
+ 	 width: 355px; 
  	 height: 80px;
 	 align-items: center;
 		}
@@ -121,9 +140,9 @@
         ul {
             border-radius: 10px 40px;
 			border: 2px solid #Ffff00;
-            margin: 0;
+            margin-right: 10px;
             padding: 0;
-            width: 250px;
+            width: 350px;
 			 
             background-color: black;
         }
@@ -223,7 +242,8 @@ document.getElementById("datee").innerHTML = d.toDateString();
 </td> </tr> 
 </table>	
  <br>
- <ul>
+  <table><tr><td>
+    <ul>
      <li>
  <a style="font-size:25px; font-color: white;" href="javascript:void(0);" onclick="toggleMenu('services')">STATIONS ➕</a>
              <ul id="services" class="submenu">
@@ -235,10 +255,24 @@ document.getElementById("datee").innerHTML = d.toDateString();
  </ul>
         </li>
        </ul>
-<table><tr><td><img src="image/jkpic1.jpg" alt="JKRadio"></td></tr>
+     
+ </td></tr>
+<tr><td><img src="image/jkpic1.jpg" alt="JKRadio"></td></tr>
  <tr><td>JATINDER</td></tr></table>
   
-</div>
+
+ <br>
+
+    <button  class="button" onclick="clearCache()">Clear Cache</button>
+    <button class="button" onclick="refreshPage()">Refresh</button>
+    <script>
+        function clearCache() {
+            if (confirm("This action will clear your browser's cache. Proceed?")) {
+                location.reload(true);
+            }
+        }
+    </script>
+ 
 		 
  <script>
       if ('serviceWorker' in navigator) {
@@ -252,5 +286,6 @@ document.querySelector('#show').addEventListener('click', () => {
   document.querySelector('#container').appendChild(imgElement);
 });
     </script>
+    </div>
 </body>
 </html>
