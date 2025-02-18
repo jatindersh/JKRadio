@@ -4,10 +4,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JKRadio</title>
-<script>
-        // This script checks if the page has already been refreshed
-        if (!sessionStorage.getItem('hasRefreshed')) {
-            sessionStorage.setItem('hasRefreshed', 'true');
+ <script type="text/javascript">
+        function reloadPage() {
             location.reload();
         }
     </script>
@@ -219,7 +217,7 @@ align-content: center;
      </head> 
 <body id="rcorners1"> 
                
- <div>
+ 
  <table  id="rcorners12">
  <tr><td></td><td style="font-size: 15px; "><p id="rcorners11"  >RADIO MIRCHI</p></td><td></td></tr>
 <tr>
@@ -306,34 +304,42 @@ document.getElementById("datee").innerHTML = d.toDateString();
           <li><a href="aajtak.html">AAJ_TAK</a></li>
           <li><a href="rainbow.html">Air Rainbow 103.4 FM</a></li>
           <li><a href="wait.html">Wait</a></li>
+          
           </ul>
         </li>
     </ul></td>
    <td></td>
  </tr>
+  
    
  <tr><td> 
   
 </td>
-<td> <img src="image/jkpic1.jpg" width="65" height="70"  alt="JKRadio">  </td>
+<td>
+<img src="image/jkpic1.jpg" width="70" height="80"  alt="JKRadio">
+</td>
 <td>
 </td></tr>
 <tr>
 <td>
 </td>
-<td><button class="button" onclick="refreshPage()"><img src="image/refresh.jpg" width="20" height="20"  alt="Refresh"></button>JATINDER<button  class="button" onclick="clearCache()"><img src="image/clear.jpg" width="20" height="20"  alt="Clear Cache"></button>
+<td>JATINDER
 </td>
 <td>
 </td>
 </tr>
 <tr>
-  <td></td>
-  <td>&nbsp;</td>
-  <td></td>
+<td>
+</td>
+<td> <button class="button" onclick="reloadPage()"><img src="image/refresh.jpg" width="35" height="35"  alt="Reload">
+	</button>
+</td>
+<td>
+</td>
 </tr>	
- </table>
+</table>
    
-</div>
+ 
 		 
  <script>
       if ('serviceWorker' in navigator) {

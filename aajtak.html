@@ -4,13 +4,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JKRadio</title>
-<script>
-        // This script checks if the page has already been refreshed
-        if (!sessionStorage.getItem('hasRefreshed')) {
-            sessionStorage.setItem('hasRefreshed', 'true');
+ <script type="text/javascript">
+        function reloadPage() {
             location.reload();
         }
     </script>
+
 <link rel="shortcut icon" href="image/mine.ico" type="image/x-icon">  
 <link rel="stylesheet" href="video-js.css">
 <script src="video.js"></script>
@@ -209,7 +208,7 @@ align-content: center;
      </head> 
 <body id="rcorners1"> 
                
- <div>
+ 
  <table>
  <tr><td></td><td></td><td></td></tr>
 <tr>
@@ -309,7 +308,8 @@ document.getElementById("datee").innerHTML = d.toDateString();
  <tr><td> 
   
 </td>
-<td><button class="button" onclick="refreshPage()"><img src="image/refresh.jpg" width="35" height="35"  alt="Refresh"></button> <img src="image/jkpic1.jpg" width="70" height="80"  alt="JKRadio"><button  class="button" onclick="clearCache()"><img src="image/clear.jpg" width="35" height="35"  alt="Clear Cache"></button>  
+<td>
+<img src="image/jkpic1.jpg" width="70" height="80"  alt="JKRadio">
 </td>
 <td>
 </td></tr>
@@ -320,11 +320,18 @@ document.getElementById("datee").innerHTML = d.toDateString();
 </td>
 <td>
 </td>
+</tr>
+<tr>
+<td>
+</td>
+<td> <button class="button" onclick="reloadPage()"><img src="image/refresh.jpg" width="35" height="35"  alt="Reload">
+	</button>
+</td>
+<td>
+</td>
 </tr>	
 </table>
-   
-</div>
-		 
+  		 
  <script>
       if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js');
