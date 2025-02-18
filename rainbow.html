@@ -4,10 +4,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JKRadio</title>
-<script>
-        // This script checks if the page has already been refreshed
-        if (!sessionStorage.getItem('hasRefreshed')) {
-            sessionStorage.setItem('hasRefreshed', 'true');
+ <script type="text/javascript">
+        function reloadPage() {
             location.reload();
         }
     </script>
@@ -29,23 +27,25 @@
             width: 100%;
         }
     </style>
-       <style>
-        .center-table {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Adjusts height to fill the entire viewport */
+<style>
+   .center-table {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       height: 100vh; /* Adjusts height to fill the entire viewport */
         }
-        table {
-			border=0;
-            border-collapse: collapse;
-            width: 50%;
+    table {
+			border-collapse: separate;
+ 			border-spacing: 0;
+ 			border: 2px solid #Ffff00;
+ 			border-radius: 10px 70px;
+ 		    overflow: hidden;
             margin: auto; /* Centers the table horizontally */
         }
         th, td {
 			border: none; 
             outline: none; 
-            padding: 8px;
+            padding: 5px;
             text-align: center; /* Centers text within table cells */
         }
     </style>
@@ -105,10 +105,18 @@ align-content: center;
 		width: 100%;
 	     
   		border-radius: 40px; 
-  		border-spacing: 1px;
+  		
  		background:#Ffff00;
 		text-align: center;
 		}
+#rcorners12 	{
+  	 border-radius: 10px 70px;
+ 	 border: 2px solid #Ffff00;
+ 	 padding: 0px;
+ 	
+	 align-items: center;
+	 background:#060403;
+	}
  </style>
      
 
@@ -150,7 +158,7 @@ align-content: center;
 		overflow: hidden;
 		width: 100%;
 		 
-  		border-radius: 40px; 
+  		border-radius: 50px; 
   		border-spacing: 0;
  		background:#Ffff00;
 		text-align: center;
@@ -209,13 +217,13 @@ align-content: center;
      </head> 
 <body id="rcorners1"> 
                
- <div>
- <table>
- <tr><td></td><td style="font-size: 15px;"><p id="rcorners11"  >RADIO <br>RAINBOW FM</p></td><td></td></tr>
+ 
+ <table  id="rcorners12">
+ <tr><td></td><td style="font-size: 15px; "><p id="rcorners11"  >RADIO <br>RAINBOW FM</p></td><td></td></tr>
 <tr>
 <td></td>
 <td id="rcorners2">
-	<video
+	   <video
     id="my-video"
     class="video-js"
     controls
@@ -227,7 +235,6 @@ align-content: center;
    <source type="application/x-mpegURL"
 	src="https://airhlspush.pc.cdn.bitgravity.com/httppush/hlspbaudio004/hlspbaudio00464kbps.m3u8" >
     </video>
-  
 </td>
 <td></td>
 </tr>
@@ -292,21 +299,24 @@ document.getElementById("datee").innerHTML = d.toDateString();
        <li>
         <a style="font-size:15px; font-color: white;" href="javascript:void(0);" onclick="toggleMenu('services')">STATIONS ➕</a>
         <ul id="services" class="submenu">
-          
-          <li><a href="aajtak.html">AAJ_TAK</a></li>
-          <li><a href="mirchi.html">Radio Mirchi</a></li>
+                  
           <li><a href="index.html">Home 🏠</a></li>
+          <li><a href="aajtak.html">AAJ_TAK</a></li>
+          <li><a href="mirchi.html">Air Radio Mirchi </a></li>
           <li><a href="wait.html">Wait</a></li>
+          
           </ul>
         </li>
     </ul></td>
    <td></td>
  </tr>
-    
+  
+   
  <tr><td> 
   
 </td>
-<td><button class="button" onclick="refreshPage()"><img src="image/refresh.jpg" width="35" height="35"  alt="Refresh"></button> <img src="image/jkpic1.jpg" width="70" height="80"  alt="JKRadio"><button  class="button" onclick="clearCache()"><img src="image/clear.jpg" width="35" height="35"  alt="Clear Cache"></button>  
+<td>
+<img src="image/jkpic1.jpg" width="70" height="80"  alt="JKRadio">
 </td>
 <td>
 </td></tr>
@@ -317,10 +327,19 @@ document.getElementById("datee").innerHTML = d.toDateString();
 </td>
 <td>
 </td>
+</tr>
+<tr>
+<td>
+</td>
+<td> <button class="button" onclick="reloadPage()"><img src="image/refresh.jpg" width="35" height="35"  alt="Reload">
+	</button>
+</td>
+<td>
+</td>
 </tr>	
 </table>
    
-</div>
+ 
 		 
  <script>
       if ('serviceWorker' in navigator) {

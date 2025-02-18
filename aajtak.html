@@ -9,7 +9,6 @@
             location.reload();
         }
     </script>
-
 <link rel="shortcut icon" href="image/mine.ico" type="image/x-icon">  
 <link rel="stylesheet" href="video-js.css">
 <script src="video.js"></script>
@@ -28,23 +27,25 @@
             width: 100%;
         }
     </style>
-       <style>
-        .center-table {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Adjusts height to fill the entire viewport */
+<style>
+   .center-table {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       height: 100vh; /* Adjusts height to fill the entire viewport */
         }
-        table {
-			border=0;
-            border-collapse: collapse;
-            width: 50%;
+    table {
+			border-collapse: separate;
+ 			border-spacing: 0;
+ 			border: 2px solid #Ffff00;
+ 			border-radius: 10px 70px;
+ 		    overflow: hidden;
             margin: auto; /* Centers the table horizontally */
         }
         th, td {
 			border: none; 
             outline: none; 
-            padding: 8px;
+            padding: 5px;
             text-align: center; /* Centers text within table cells */
         }
     </style>
@@ -104,10 +105,18 @@ align-content: center;
 		width: 100%;
 	     
   		border-radius: 40px; 
-  		border-spacing: 1px;
- 		background: dark blue;
+  		
+ 		background:#Ffff00;
 		text-align: center;
 		}
+#rcorners12 	{
+  	 border-radius: 10px 70px;
+ 	 border: 2px solid #Ffff00;
+ 	 padding: 0px;
+ 	
+	 align-items: center;
+	 background:#060403;
+	}
  </style>
      
 
@@ -149,7 +158,7 @@ align-content: center;
 		overflow: hidden;
 		width: 100%;
 		 
-  		border-radius: 40px; 
+  		border-radius: 50px; 
   		border-spacing: 0;
  		background:#Ffff00;
 		text-align: center;
@@ -209,12 +218,12 @@ align-content: center;
 <body id="rcorners1"> 
                
  
- <table>
- <tr><td></td><td></td><td></td></tr>
+ <table  id="rcorners12">
+ 
 <tr>
 <td></td>
 <td id="rcorners2">
-	 <video
+	  <video
     id="my-video"
     class="video-js"
     controls
@@ -223,12 +232,9 @@ align-content: center;
     height= "auto"
     data-setup="{}"
     >
-
-    <source type="application/x-mpegURL"
-src="https://feeds.intoday.in/aajtak/api/aajtakhd/master.m3u8" >
-
+   <source type="application/x-mpegURL"
+	src="https://feeds.intoday.in/aajtak/api/aajtakhd/master.m3u8" >
     </video>
-  
 </td>
 <td></td>
 </tr>
@@ -293,11 +299,12 @@ document.getElementById("datee").innerHTML = d.toDateString();
        <li>
         <a style="font-size:15px; font-color: white;" href="javascript:void(0);" onclick="toggleMenu('services')">STATIONS ➕</a>
         <ul id="services" class="submenu">
-           <li><a href="index.html">🏠Home</a></li>
+                  
+          <li><a href="index.html">Home 🏠</a></li>
           <li><a href="mirchi.html">Radio Mirchi</a></li>
           <li><a href="rainbow.html">Air Rainbow 103.4 FM</a></li>
           <li><a href="wait.html">Wait</a></li>
-           
+          
           </ul>
         </li>
     </ul></td>
@@ -331,7 +338,9 @@ document.getElementById("datee").innerHTML = d.toDateString();
 </td>
 </tr>	
 </table>
-  		 
+   
+ 
+		 
  <script>
       if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js');
