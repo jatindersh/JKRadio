@@ -26,7 +26,22 @@
         .content {
             width: 100%;
         }
-    </style>
+</style>
+<style>
+    .marquee-container {
+	  	width: 300px;
+      	display: flex;
+      	overflow: hidden;
+      	white-space: nowrap;
+    }
+    .marquee {
+      animation: marquee-animation 10s linear infinite;
+    }
+    @keyframes marquee-animation {
+      from { transform: translateX(100%); }
+      to { transform: translateX(-100%); }
+    }
+  </style>
 <style>
    .center-table {
        display: flex;
@@ -216,9 +231,14 @@ align-content: center;
     </style>
      </head> 
 <body id="rcorners1"> 
-               
- 
+   
  <table  id="rcorners12">
+ <tr><td></td><td><div class="marquee-container">
+    <div class="marquee">Its an Internet Radio ..........Please </div>
+    <div class="marquee">  Check Your Internet Connection </div>
+  
+       
+    </td><td></td></tr>
  <tr><td></td><td style="font-size: 15px; "><p id="rcorners11"  >RADIO <br>VIVIDH BHARTI</p></td><td></td></tr>
 <tr>
 <td></td>
@@ -337,7 +357,7 @@ document.getElementById("datee").innerHTML = d.toDateString();
 </td>
 </tr>	
 </table>
-   
+  
  
 		 
  <script>
