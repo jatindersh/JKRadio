@@ -4,40 +4,75 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JKRadio</title>
- <link rel="stylesheet" href="ICL-CONTAINER.css">
- 
-   <link rel="shortcut icon" href="image/mine.ico" type="image/x-icon">  
+<script>
+        // This script checks if the page has already been refreshed
+        if (!sessionStorage.getItem('hasRefreshed')) {
+            sessionStorage.setItem('hasRefreshed', 'true');
+            location.reload();
+        }
+    </script>
+<link rel="shortcut icon" href="image/mine.ico" type="image/x-icon">  
 <link rel="stylesheet" href="video-js.css">
 <script src="video.js"></script>
 <style>
-        .button {
-            margin-right: 10px; /* Adjust this value to increase or decrease space */
-			 background-color: black;
-            color: white; /* Text color */
-            border: 1px solid yellow;
-            border-radius: 15px; /* Adjust this value for more or less roundness */
-            padding: 5px 20px; /* Adjust for button size */
-            font-size: 15px;
-            cursor: pointer;
-			width: 80px;
-			align-content: center;
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center;    /* Center vertically */
+            text-align: center;     /* Center text */
+	        background-color: black; /* Set the background color to black */
+            color: white;          
+        }
+        .content {
+            width: 100%;
         }
     </style>
-     <script>
-        function clearCache() {
-            if (confirm("This action will clear your browser's cache. Proceed?")) {
-                location.reload(true);
+       <style>
+        .center-table {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Adjusts height to fill the entire viewport */
+        }
+        table {
+			border=0;
+            border-collapse: collapse;
+            width: 50%;
+            margin: auto; /* Centers the table horizontally */
+        }
+        th, td {
+			border: none; 
+            outline: none; 
+            padding: 8px;
+            text-align: center; /* Centers text within table cells */
+        }
+    </style>
+<style>
+.button {
+            
+background-color: black;
+color: white; /* Text color */
+border: 1px solid yellow;
+border-radius: 15px; 
+padding: 5px 20px; 
+cursor: pointer;
+align-content: center;
+</style>
+<script>
+     function clearCache() {
+     if (confirm("This action will clear your browser's cache. Proceed?")) {
+     location.reload(true);
             }
         }
-    </script>
+</script>
 <script>
-        function refreshPage() {
-            window.location.reload();
+      function refreshPage() {
+      window.location.reload();
         }
-    </script>
- 
- 
-<style>
+    </script> 
+ <style>
  #rcorners 	{
   	 border-radius: 10px 25px;
  	 border: 2px solid #73AD21;
@@ -49,6 +84,15 @@
 
 #rcorners1 	{
   	 border-radius: 10px 70px;
+ 	 border: 2px solid #Ffff00;
+ 	 padding: 8px;
+ 	 width: 90%;
+	 height: 85%;
+	 align-items: center;
+	 background:#060403;
+	}
+#rcorners11 	{
+  	 border-radius: 10px 70px;
  	 border: 4px solid #73AD21;
  	 padding: 8px;
  	 width: 90%;
@@ -59,31 +103,15 @@
 #rcorners2 	{
   	    overflow: hidden;
 		width: 100%;
-	    
-		border: 2px solid #73AD21;
+	     
   		border-radius: 40px; 
   		border-spacing: 1px;
- 		background:#Ffff00;
+ 		background: dark blue;
 		text-align: center;
 		}
  </style>
      
-<style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            display: flex;
-            justify-content: center; /* Center horizontally */
-            align-items: center;    /* Center vertically */
-            text-align: center;     /* Center text */
-	    
-            background-color: black; /* Set the background color to black */
-            color: white;          
-        }
-        .content {
-            width: 100%;
-        }
-    </style>
+
  <!-- Style Sheet for clock-->
    <style>
      #clock{
@@ -109,8 +137,8 @@
            border: 0px solid Blue;
            border-radius: 10px;
 	   align-items: center;
-                    }
-   
+                 }
+
     .td {
   background:linear-gradient(to right,  rgb(221,255,204) 50%, rgb(201,255,229) 51%);
   border-radius: 60px;
@@ -121,7 +149,7 @@
          	 
 		overflow: hidden;
 		width: 100%;
-		border: 1px solid #73AD21;
+		 
   		border-radius: 40px; 
   		border-spacing: 0;
  		background:#Ffff00;
@@ -129,28 +157,18 @@
 		 
 	}
 
-	
 </style>
-<style>
-        table {
-            width: 100%;
-            
-            border-collapse: collapse;
-        }
-        td {
-            text-align: center;
-            vertical-align: middle;
-        }
-    </style>
-   
+  
 <style>
         ul {
             border-radius: 10px 40px;
-	    border: 2px solid #Ffff00;
+	    	border: 2px solid #Ffff00;
             margin: 0;
             padding: 0;
-            width: 250px;
-			 
+            width: auto;
+			justify-content: center; /* Center horizontally */
+            align-items: center;    /* Center vertically */
+            text-align: center; 
              background-color: black;
         }
         li {
@@ -183,14 +201,46 @@
             }
         }
     </script>
-     </head>
-<body id="rcorners1" class="ICL-CONTAINER">
+    <style>
+        table {
+            border: 0;
+        }
+    </style>
+     </head> 
+<body id="rcorners1"> 
                
  <div>
- <table class="tbl">
+ <table>
+ <tr><td></td><td></td><td></td></tr>
 <tr>
-<td>
-	<label class="date" id="datee"></label>
+<td></td>
+<td id="rcorners2">
+	 <video
+    id="my-video"
+    class="video-js"
+    controls
+    preLoad="auto"
+    width=  "230px"
+    height= "auto"
+    data-setup="{}"
+    >
+
+    <source type="application/x-mpegURL"
+src="https://feeds.intoday.in/aajtak/api/aajtakhd/master.m3u8" >
+
+    </video>
+  
+</td>
+<td></td>
+</tr>
+ <tr>
+   <td></td>
+   <td></td>
+   <td></td>
+ </tr>
+ <tr>
+   <td></td>
+   <td class="tbl"><label class="date" id="datee"></label>
 	<br>
      <label  class="clock" id="clock">8:10:45</label>
  <script>
@@ -229,51 +279,50 @@ document.getElementById("datee").innerHTML = d.toDateString();
          }
  		showTime();
 
-    </script>
-</td> </tr> 
-</table>	
-<br> 
-   <table id="rcorners2"><tr><td>
-    <video
-    id="my-video"
-    class="video-js"
-    controls
-    preLoad="auto"
-    width=  "230px"
-    height= "auto"
-    data-setup="{}"
-    >
-   <source type="application/x-mpegURL"
-	src="https://feeds.intoday.in/aajtak/api/aajtakhd/master.m3u8" >
-    </video>
- </td></tr></table>
- <br>
- <ul>
-        <li>
-            <a style="font-size:25px;" href="javascript:void(0);" onclick="toggleMenu('services')">STATIONS ➕</a>
-            <ul id="services" class="submenu">
-	<li><a href="index.html">🏠 Home</a></li>
-        <li><a href="mirchi.html">Radio Mirchi</a></li>
-        <li><a href="rainbow.html">Rainbow 103.4 FM</a></li>
-                <li><a href="wait.html">Wait</a></li>
-            </ul>
+    </script></td>
+   <td></td>
+ </tr>
+ <tr>
+   <td></td>
+   <td></td>
+   <td></td>
+ </tr>
+ <tr>
+   <td></td>
+   <td> 
+      <ul>
+       <li>
+        <a style="font-size:15px; font-color: white;" href="javascript:void(0);" onclick="toggleMenu('services')">STATIONS ➕</a>
+        <ul id="services" class="submenu">
+          
+          <li><a href="aajtak.html">AAJ_TAK</a></li>
+          <li><a href="mirchi.html">Radio Mirchi</a></li>
+          <li><a href="index.html">🏠Home</a></li>
+          <li><a href="wait.html">Wait</a></li>
+          </ul>
         </li>
-       
-    </ul>
-  <table>
-
- <tr><td rowspan="2"> 
-<button class="button" onclick="refreshPage()"><img src="image/refresh.jpg" width="35" height="35"  alt="Refresh"></button>   
+    </ul></td>
+   <td></td>
+ </tr>
+  
+   
+ <tr><td> 
+  
 </td>
-<td><img src="image/jkpic1.jpg" width="70" height="80"  alt="JKRadio">
+<td><button class="button" onclick="refreshPage()"><img src="image/refresh.jpg" width="35" height="35"  alt="Refresh"></button> <img src="image/jkpic1.jpg" width="70" height="80"  alt="JKRadio"><button  class="button" onclick="clearCache()"><img src="image/clear.jpg" width="35" height="35"  alt="Clear Cache"></button>  
 </td>
-<td rowspan="2"><button  class="button" onclick="clearCache()"><img src="image/clear.jpg" width="35" height="35"  alt="Clear Cache"></button>  
+<td>
 </td></tr>
 <tr>
+<td>
+</td>
 <td>JATINDER
 </td>
+<td>
+</td>
 </tr>	
-</table> 
+</table>
+   
 </div>
 		 
  <script>
@@ -288,5 +337,6 @@ document.querySelector('#show').addEventListener('click', () => {
   document.querySelector('#container').appendChild(imgElement);
 });
     </script>
+   
 </body>
 </html>
