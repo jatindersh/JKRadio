@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Records</title>
+</head>
+<body>
+    <h1>Update Records</h1>
+    <form id="updateForm">
+        <label for="index">Record Index:</label>
+        <input type="text" id="index" name="index" required><br><br>
+        <label for="sno">Serial Number:</label>
+        <input type="text" id="sno" name="sno" required><br><br>
+        <label for="news">News HTML:</label><br>
+        <textarea id="news" name="news" rows="10" cols="50" required></textarea><br><br>
+        <button type="submit">Update Record</button>
+    </form>
+    <script>
+        document.getElementById('updateForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const index = document.getElementById('index').value;
+            const sno = document.getElementById('sno').value;
+            const news = document.getElementById('news').value;
+
+            let data = [];
+
+            if (localStorage.getItem('jsonData')) {
+                data = JSON.parse(localStorage.getItem('jsonData'));
+            }
+
+            if (data[index]) {
+                data[index] = { sno: parseInt(sno), news: news };
+                localStorage.setItem('jsonData', JSON.stringify(data));
+            }
+
+            // Clear the form
+            document.getElementById('index').value = '';
+            document.getElementById('sno').value = '';
+            document.getElementById('news').value = '';
+        });
+    </script>
+</body>
+</html>

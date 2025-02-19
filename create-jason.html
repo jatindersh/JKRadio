@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create JSON File</title>
+</head>
+<body>
+    <h1>Create JSON File</h1>
+    <button onclick="createJSONFile()">Create JSON</button>
+    <script>
+        function createJSONFile() {
+            const data = [
+                {
+                    "sno": 1,
+                    "news": "<html><body><h1>News Title 1</h1><p>This is the news content for article 1.</p></body></html>"
+                }
+            ];
+
+            const json = JSON.stringify(data, null, 2);
+            
+            const blob = new Blob([json], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "data.json";
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
