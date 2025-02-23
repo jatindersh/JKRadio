@@ -1,79 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Display JSON Data with GitRows</title>
-  <script src="https://unpkg.com/gitrows@latest/dist/gitrows.min.js"></script>
-  <style>
-    .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    table, th, td {
-      border: 1px solid #ddd;
-      text-align: left;
-      padding: 8px;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
-    marquee {
-      width: 100%;
-      padding: 10px 0;
-      background-color: #f2f2f2;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display JSON Data in Marquee</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        marquee {
+            font-size: 24px;
+            color: #4CAF50;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>News</h1>
-    <marquee id="news-marquee"></marquee>
-    <table>
-      <thead>
-        <tr>
-          <th>S.No</th>
-          <th>News</th>
-        </tr>
-      </thead>
-      <tbody id="news-table">
-      </tbody>
-    </table>
-  </div>
+    <h1>JSON Data in Marquee</h1>
+    <marquee id="marquee" behavior="scroll" direction="left"></marquee>
 
-  <script>
-    const gitrows = new Gitrows();
-    const path = `@github/jatindersh/JKRadio/data.json`;
-
-    gitrows.get(path)
-      .then(data => {
-        const marquee = document.getElementById('news-marquee');
-        const tableBody = document.getElementById('news-table');
-        let marqueeText = '';
-
-        data.forEach((newsItem, index) => {
-          marqueeText += `${newsItem.news} | `;
-          const row = document.createElement('tr');
-          row.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${newsItem.news}</td>
-          `;
-          tableBody.appendChild(row);
-        });
-
-        marquee.innerHTML = marqueeText;
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  </script>
+    <script>
+        // Fetch the JSON file from GitHub
+        fetch('https://raw.githubusercontent.com/jatindersh/JKRadio/main/data.json')
+            .then(response => response.json())
+            .then(data => {
+                let text = "";
+                data.forEach(item => {
+                    text += `S.No: ${item.sno} - News: ${item.news} | `;
+                });
+                document.getElementById('marquee').textContent = text;
+            })
+            .catch(error => {
+                console.error('Error fetching JSON:', error);
+            });
+    </script>
 </body>
 </html>
