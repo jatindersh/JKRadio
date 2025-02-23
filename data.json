@@ -1,1 +1,14 @@
-[]
+[
+    {
+        "sno": 1,
+        "news": "First news item"
+    },
+    {
+        "sno": 2,
+        "news": "Second news item"
+    },
+    {
+        "sno": 3,
+        "news": "Third news item"
+    }
+]
