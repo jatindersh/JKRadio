@@ -25,7 +25,7 @@
             .then(data => {
                 let text = "";
                 data.forEach(item => {
-                    text += `S.No: ${item.sno} - News: ${item.news} | `;
+                    text += `${item.sno} - ${item.news} | `;
                 });
                 document.getElementById('marquee').textContent = text;
             })
