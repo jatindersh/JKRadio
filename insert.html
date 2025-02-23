@@ -1,72 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enter News with GitRows</title>
-  <script src="https://unpkg.com/gitrows@latest/dist/gitrows.min.js"></script>
-  <style>
-    .container {
-      max-width: 600px;
-      margin: auto;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-    }
-    .form-group {
-      margin-bottom: 15px;
-    }
-    .form-group label {
-      display: block;
-      margin-bottom: 5px;
-    }
-    .form-group input, .form-group textarea {
-      width: 100%;
-      padding: 8px;
-      box-sizing: border-box;
-    }
-    .form-group button {
-      padding: 10px 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Records into JSON File</title>
 </head>
 <body>
-  <div class="container">
-    <h1>Enter News</h1>
-    <div class="form-group">
-      <label for="sno">Serial Number (S.No)</label>
-      <input type="number" id="sno" placeholder="Enter Serial Number">
-    </div>
-    <div class="form-group">
-      <label for="news">News</label>
-      <textarea id="news" placeholder="Enter News Content"></textarea>
-    </div>
-    <div class="form-group">
-      <button id="submit">Submit</button>
-    </div>
-    <div id="result"></div>
-  </div>
+    <h1>Insert Records into JSON File</h1>
+    <form id="jsonForm">
+        <label for="sno">S.No:</label>
+        <input type="number" id="sno" name="sno" required>
+        <br>
+        <label for="news">News:</label>
+        <input type="text" id="news" name="news" required>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        const form = document.getElementById('jsonForm');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const sno = document.getElementById('sno').value;
+            const news = document.getElementById('news').value;
 
-  <script>
-    const gitrows = new Gitrows();
-    const path = `@github/jatindersh/JKRadio/data.json`;
+            const newData = { "sno": parseInt(sno), "news": news };
 
-    document.getElementById('submit').addEventListener('click', () => {
-      const sno = document.getElementById('sno').value;
-      const news = document.getElementById('news').value;
+            fetch('https://api.github.com/repos/jatindersh/JKRadio/contents/data.json', {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'token YOUR_PERSONAL_ACCESS_TOKEN',
+                    'Accept': 'application/vnd.github.v3+json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                const content = atob(data.content);
+                const jsonContent = JSON.parse(content);
+                jsonContent.push(newData);
 
-      const newsItem = {
-        sno,
-        news
-      };
+                const updatedContent = btoa(JSON.stringify(jsonContent, null, 4));
 
-      gitrows.post(path, newsItem)
-        .then(response => {
-          document.getElementById('result').innerText = 'News item added successfully!';
-        })
-        .catch(error => {
-          document.getElementById('result').innerText = 'Error adding news item: ' + error.message;
+                fetch('https://api.github.com/repos/jatindersh/JKRadio/contents/data.json', {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': 'token YOUR_PERSONAL_ACCESS_TOKEN',
+                        'Accept': 'application/vnd.github.v3+json'
+                    },
+                    body: JSON.stringify({
+                        message: 'Insert new record into data.json',
+                        content: updatedContent,
+                        sha: data.sha
+                    })
+                })
+                .then(response => response.json())
+                .then(result => {
+                    alert('Record added successfully!');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         });
-    });
-  </script>
+    </script>
 </body>
 </html>
