@@ -1,66 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create JSON File with GitRows</title>
-  <script src="https://unpkg.com/gitrows@latest/dist/gitrows.min.js"></script>
-  <style>
-    .container {
-      max-width: 600px;
-      margin: auto;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-    }
-    .form-group {
-      margin-bottom: 15px;
-    }
-    .form-group label {
-      display: block;
-      margin-bottom: 5px;
-    }
-    .form-group input, .form-group textarea {
-      width: 100%;
-      padding: 8px;
-      box-sizing: border-box;
-    }
-    .form-group button {
-      padding: 10px 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Empty JSON File</title>
 </head>
 <body>
-  <div class="container">
-    <h1>Create JSON File</h1>
-    <div class="form-group">
-      <label for="filename">Filename</label>
-      <input type="text" id="filename" placeholder="Enter filename (e.g., data.json)">
-    </div>
-    <div class="form-group">
-      <button id="create">Create</button>
-    </div>
-    <div id="result"></div>
-  </div>
+    <h1>Create Empty JSON File with Fields "sno" and "news"</h1>
+    <script>
+        // Create an empty array
+        const data = [];
 
-  <script>
-    const gitrows = new Gitrows();
+        // Convert the empty array to a JSON string
+        const jsonData = JSON.stringify(data, null, 4);
 
-    document.getElementById('create').addEventListener('click', () => {
-      const filename = document.getElementById('filename').value;
-      const path = `@github/jatindersh/JKRadio/${filename}`;
+        // Create a blob from the JSON string
+        const blob = new Blob([jsonData], { type: "application/json" });
 
-      const emptyData = [
-        { sno: "", news: "" }
-      ];
-
-      gitrows.post(path, emptyData)
-        .then(response => {
-          document.getElementById('result').innerText = 'JSON file created successfully!';
-        })
-        .catch(error => {
-          document.getElementById('result').innerText = 'Error creating JSON file: ' + error.message;
-        });
-    });
-  </script>
+        // Create a link to download the JSON file
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "data.json";
+        a.textContent = "Download JSON file";
+        
+        // Add the link to the document
+        document.body.appendChild(a);
+    </script>
 </body>
 </html>
