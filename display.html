@@ -3,54 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Display JSON Records</title>
+    <title>Display Records from JSON</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
-    <h1>JSON Records</h1>
-    <table border="1">
+    <h1>Display Records from JSON</h1>
+    <table>
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Email</th>
+                <th>SNo</th>
+                <th>News</th>
             </tr>
         </thead>
         <tbody id="records"></tbody>
     </table>
 
-   <script>
-    async function fetchData() {
-        try {
+    <script>
+        async function fetchData() {
             const response = await fetch('data.json');
-            if (!response.ok) throw new Error('Network response was not ok');
             const data = await response.json();
-            console.log('Fetched data:', data); // Add this line
             displayRecords(data);
-        } catch (error) {
-            console.error('There was a problem with the fetch operation:', error);
         }
-    }
 
-    function displayRecords(records) {
-        const tableBody = document.getElementById('records');
-        tableBody.innerHTML = ''; // Clear any existing rows
+        function displayRecords(records) {
+            const tableBody = document.getElementById('records');
+            tableBody.innerHTML = ''; // Clear any existing rows
 
-        records.forEach(record => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${record.name}</td>
-                <td>${record.age}</td>
-                <td>${record.email}</td>
-            `;
-            tableBody.appendChild(row);
-        });
-    }
+            records.forEach(record => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${record.sno}</td>
+                    <td>${record.news}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
 
-    // Fetch and display data when the page loads
-    window.onload = fetchData;
-</script>
-
+        // Fetch and display data when the page loads
+        window.onload = fetchData;
+    </script>
 </body>
 </html>
-
-

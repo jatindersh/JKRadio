@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display JSON Data in Marquee</title>
+    <style>
+        marquee {
+            width: 100%;
+            padding: 20px;
+            font-size: 20px;
+            background-color: #f1f1f1;
+            color: #333;
+            border: 1px solid #ccc;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <h1>Display JSON Data in Marquee</h1>
+    <marquee id="marquee" behavior="scroll" direction="left"></marquee>
+
+    <script>
+        async function fetchData() {
+            const response = await fetch('data.json');
+            const data = await response.json();
+            displayDataInMarquee(data);
+        }
+
+        function displayDataInMarquee(records) {
+            const marquee = document.getElementById('marquee');
+            let marqueeText = '';
+
+            records.forEach(record => {
+                marqueeText += `SNo: ${record.sno} - News: ${record.news} | `;
+            });
+
+            marquee.textContent = marqueeText;
+        }
+
+        // Fetch and display data when the page loads
+        window.onload = fetchData;
+    </script>
+</body>
+</html>
