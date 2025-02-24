@@ -6,13 +6,5 @@
     {
         "sno": 2,
         "news": "Hello How are you"
-    },
-    {
-        "sno": 3,
-        "news": "third"
-    },
-    {
-        "sno": 4,
-        "news": "fourth"
     }
 ]
