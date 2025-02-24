@@ -1,0 +1,29 @@
+name: Auto Commit and Push
+
+on:
+  schedule:
+    - cron: '0 * * * *' # Runs every hour
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository content
+      uses: actions/checkout@v2
+
+    - name: Configure Git
+      run: |
+        git config --global user.name 'jatindersh'
+        git config --global user.email 'jatindersh@yahoo.com'
+
+    - name: Commit and Push changes
+      run: |
+        git add .
+        git commit -m "Auto commit on $(date)"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
