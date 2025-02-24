@@ -22,8 +22,8 @@ jobs:
 
     - name: Make changes
       run: |
-        # Add your commands to make changes here
         echo "Auto commit at $(Get-Date)" >> auto-commit-log.txt
+        echo "Updated file:" $(ls auto-commit-log.txt) # Add debugging line
 
     - name: Commit changes
       uses: stefanzweifel/git-auto-commit-action@v4
@@ -31,3 +31,7 @@ jobs:
         commit_message: "Auto commit"
         branch: main
         file_pattern: auto-commit-log.txt
+
+    - name: Push changes # Add this step if not included
+      run: |
+        git push origin main
