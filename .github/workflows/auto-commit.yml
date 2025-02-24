@@ -1,0 +1,28 @@
+name: Auto Commit
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 * * * *' # Runs every hour
+
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Make changes
+      run: |
+        # Add your commands to make changes here
+        echo "Auto commit at $(date)" >> auto-commit-log.txt
+
+    - name: Commit changes
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: "Auto commit"
+        branch: main
+        file_pattern: auto-commit-log.txt
