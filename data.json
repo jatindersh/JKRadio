@@ -1,5 +1,12 @@
 [
-    { "sno": 1, "news": "First news item" },
-    { "sno": 2, "news": "Second news item" },
-    { "sno": 3, "news": "Third news item" }
+  {
+    "name": "John Doe",
+    "age": 30,
+    "email": "john@example.com"
+  },
+  {
+    "name": "Jane Smith",
+    "age": 25,
+    "email": "jane@example.com"
+  }
 ]
