@@ -2,5 +2,9 @@
     {
         "sno": 1,
         "news": "hellow"
+    },
+    {
+        "sno": 2,
+        "news": "Hello How are you"
     }
 ]
