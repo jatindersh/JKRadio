@@ -9,16 +9,21 @@ on:
 
 jobs:
   auto-commit:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Configure Git
+      run: |
+        git config --global user.name 'jatindersh'
+        git config --global user.email 'jatindersh@yahoo.com'
+
     - name: Make changes
       run: |
         # Add your commands to make changes here
-        echo "Auto commit at $(date)" >> auto-commit-log.txt
+        echo "Auto commit at $(Get-Date)" >> auto-commit-log.txt
 
     - name: Commit changes
       uses: stefanzweifel/git-auto-commit-action@v4
