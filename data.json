@@ -10,5 +10,9 @@
     {
         "sno": 3,
         "news": "Hello How are you"
+    },
+    {
+        "sno": 8,
+        "news": "Haaaaa Hell"
     }
 ]
