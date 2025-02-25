@@ -248,14 +248,7 @@ align-content: center;
         overflow: hidden;
     }
 </style>
-     </head> 
-<body id="rcorners1"> 
-   
- <table  id="rcorners12">
- <tr>
-	 <td></td>
-	 <td><marquee id="marquee" behavior="scroll" direction="left"></marquee>
-
+    
         <script>
             async function fetchData() {
                 const response = await fetch('data.json');
@@ -276,13 +269,20 @@ align-content: center;
     
             // Fetch and display data when the page loads
             window.onload = fetchData;
-        </script></td>
-	 <td></td>
+        </script>
+     </head> 
+<body id="rcorners1"> 
+   
+ <table  id="rcorners12">
+ <tr>
+	
+	 <td><marquee id="marquee" behavior="scroll" direction="left"></marquee>
+</td>
+	
     
  </tr>
- <tr><td></td><td style="font-size: 15px; "><p id="rcorners11"  >RADIO <br>VIVIDH BHARTI</p></td><td></td></tr>
+ <tr><td style="font-size: 15px; "><p id="rcorners11"  >RADIO <br>VIVIDH BHARTI</p></td></tr>
 <tr>
-<td></td>
 <td id="rcorners2">
 	  <video
     id="my-video"
@@ -296,15 +296,11 @@ align-content: center;
    <source type="application/x-mpegURL" src="https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8">
     </video>
 </td>
-<td></td>
+ 
 </tr>
+  
  <tr>
-   <td></td>
-   <td></td>
-   <td></td>
- </tr>
- <tr>
-   <td></td>
+  
    <td class="tbl"><label class="date" id="datee"></label>
 	<br>
      <label  class="clock" id="clock">8:10:45</label>
@@ -345,15 +341,11 @@ document.getElementById("datee").innerHTML = d.toDateString();
  		showTime();
 
     </script></td>
-   <td></td>
+   
  </tr>
+  
  <tr>
-   <td></td>
-   <td></td>
-   <td></td>
- </tr>
- <tr>
-   <td></td>
+    
    <td> 
       <ul>
        <li>
@@ -368,39 +360,27 @@ document.getElementById("datee").innerHTML = d.toDateString();
           </ul>
         </li>
     </ul></td>
-   <td></td>
- </tr>
-  
    
- <tr><td> 
-  
-</td>
+ </tr>
+   
+ <tr> 
 <td>
 <img src="image/jkpic1.jpg" width="70" height="80"  alt="JKRadio">
 </td>
-<td>
-</td></tr>
+</tr>
 <tr>
-<td>
-</td>
 <td>JATINDER
-</td>
-<td>
 </td>
 </tr>
 <tr>
-<td>
-</td>
+
 <td> <button class="button" onclick="reloadPage()"><img src="image/refresh.jpg" width="35" height="35"  alt="Reload">
 	</button>
 </td>
-<td>
-</td>
+
 </tr>	
 </table>
-  
- 
-		 
+ 		 
  <script>
       if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js');
