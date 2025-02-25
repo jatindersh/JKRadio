@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage JSON Records</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+           
+	        background-color: black; /* Set the background color to black */
+            color: white;          
+        }
+        .content {
+            width: 100%;
+        }
+</style>
+
+</head>
+<body>
+    <h1>Navigate to Home Page
+    <button onclick="window.location.href='admin.html'">Home</button></h1>
+    <h1>Manage JSON Records</h1>
+    <form id="recordForm">
+        <label for="sno">Enter SNo:</label>
+        <input type="number" id="sno" name="sno" required>
+        <label for="news">Enter News:</label>
+        <input type="text" id="news" name="news" required>
+        <button type="submit">Add Record</button>
+    </form>
+   
+    <p id="message"></p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>SNo</th>
+                <th>News</th>
+            </tr>
+        </thead>
+        <tbody id="records"></tbody>
+    </table>
+
+    <script>
+        async function fetchData() {
+            const response = await fetch('data.php');
+            const data = await response.json();
+            displayRecords(data);
+        }
+
+        async function addRecord(event) {
+            event.preventDefault();
+            const sno = document.getElementById('sno').value;
+            const news = document.getElementById('news').value;
+
+            const newRecord = { sno: parseInt(sno), news: news };
+
+            const response = await fetch('add.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newRecord)
+            });
+
+            const data = await response.json();
+            document.getElementById('message').textContent = 'Record added successfully!';
+            document.getElementById('recordForm').reset();
+            displayRecords(data);
+        }
+
+        async function deleteRecord() {
+            const sno = parseInt(prompt('Enter the SNo of the record to delete:'));
+
+            const response = await fetch('delete.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ sno: sno })
+            });
+
+            const data = await response.json();
+            document.getElementById('message').textContent = `Record with SNo ${sno} deleted successfully!`;
+            displayRecords(data);
+        }
+
+        function displayRecords(records) {
+            const tableBody = document.getElementById('records');
+            tableBody.innerHTML = ''; // Clear any existing rows
+
+            records.forEach(record => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${record.sno}</td>
+                    <td>${record.news}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        window.onload = fetchData;
+
+        document.getElementById('recordForm').addEventListener('submit', addRecord);
+    </script>
+</body>
+</html>

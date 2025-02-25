@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Display Records from JSON</title>
+    
     <style>
         table {
             width: 100%;
@@ -17,8 +17,34 @@
             text-align: left;
         }
     </style>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+           
+	        background-color: black; /* Set the background color to black */
+            color: white;          
+        }
+        .content {
+            width: 100%;
+        }
+</style>
+<style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: auto;
+        }
+        th, td {
+            border: 1px solid white;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
+   <h1>Navigate to Home Page
+    <button onclick="window.location.href='admin.html'">Home</button></h1>
     <h1>Display Records from JSON</h1>
     <table>
         <thead>

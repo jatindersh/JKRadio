@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            if (password == "jat$$$@68") {
+                document.getElementById("adminContent").style.display = 'block';
+                document.getElementById("loginForm").style.display = 'none';
+            } else {
+                alert("Incorrect password. Please try again.");
+            }
+        }
+    </script>
+    <style>
+        #adminContent {
+            display: none; /* Hide admin content by default */
+        }
+    </style>
+    <script>
+        function insertItem() {
+            window.location.href = 'insert.html';
+        }
+
+        function deleteItem() {
+            window.location.href = 'delete.html';
+        }
+
+        function displayItem() {
+            window.location.href = 'display.html';
+        }
+
+    </script>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            text-align: center;     /* Center text */
+	        background-color: black; /* Set the background color to black */
+            color: white;          
+        }
+      
+</style>
+ <style>
+    marquee {
+        width: 100%;
+        height:fit-content
+        padding: 1px;
+        font-size: 30px;
+        overflow: hidden;
+    }
+</style>
+<style>
+#rcorners12 	{
+  	 border-radius: 10px 70px;
+ 	 border: 2px solid #Ffff00;
+ 	 padding: 0px;
+ 	
+	 align-items: center;
+	 background:#060403;
+	}
+ </style>
+ <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: auto;
+        }
+        th, td {
+            border: 1px solid white;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+       <script>
+            async function fetchData() {
+                const response = await fetch('data.json');
+                const data = await response.json();
+                displayDataInMarquee(data);
+            }
+    
+            function displayDataInMarquee(records) {
+                const marquee = document.getElementById('marquee');
+                let marqueeText = '';
+    
+                records.forEach(record => {
+                    marqueeText += `${record.sno} - : ${record.news} | `;
+                });
+    
+                marquee.textContent = marqueeText;
+            }
+    
+            // Fetch and display data when the page loads
+            window.onload = fetchData;
+        </script>
+</head>
+<body>
+     <h1>Admin Login</h1>
+    <div id="loginForm">
+        <form onsubmit="validatePassword(); return false;">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+      <div id="adminContent" style="display: none;">
+   <table>
+ <tr>
+<td>
+	 <marquee id="marquee" behavior="scroll" direction="left"></marquee>
+</td>
+</tr>
+		  </table>
+    <h1>JK Radio Admin Operations</h1>
+    
+    <button onclick="insertItem()">Insert</button>
+    <button onclick="deleteItem()">Delete</button>
+     
+    <button onclick="displayItem()">Display</button>
+     
+	</div>
+</html>
