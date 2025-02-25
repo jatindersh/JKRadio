@@ -9,7 +9,17 @@
    <link rel="shortcut icon" href="image/mine.ico" type="image/x-icon">  
 <link rel="stylesheet" href="video-js.css">
 <script src="video.js"></script>
-
+<style>
+    marquee {
+        width: 100%;
+        padding: 20px;
+        font-size: 20px;
+        background-color: #f1f1f1;
+        color: #333;
+        border: 1px solid #ccc;
+        overflow: hidden;
+    }
+</style>
  
 <style>
  #rcorners 	{
@@ -163,7 +173,29 @@
     </script>
       </head>
 <body id="rcorners1" class="ICL-CONTAINER">
-               
+    <marquee id="marquee" behavior="scroll" direction="left"></marquee>
+
+    <script>
+        async function fetchData() {
+            const response = await fetch('data.json');
+            const data = await response.json();
+            displayDataInMarquee(data);
+        }
+
+        function displayDataInMarquee(records) {
+            const marquee = document.getElementById('marquee');
+            let marqueeText = '';
+
+            records.forEach(record => {
+                marqueeText += `SNo: ${record.sno} - News: ${record.news} | `;
+            });
+
+            marquee.textContent = marqueeText;
+        }
+
+        // Fetch and display data when the page loads
+        window.onload = fetchData;
+    </script>          
  <div  class="cc">
  
 
