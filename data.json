@@ -2,5 +2,13 @@
     {
         "sno": 1,
         "news": "Good Idea "
+    },
+    {
+        "sno": 2,
+        "news": "Lets Listen "
+    },
+    {
+        "sno": 3,
+        "news": "Internet Radio"
     }
 ]
