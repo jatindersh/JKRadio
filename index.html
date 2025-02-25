@@ -1,7 +1,9 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JKRadio</title>
 <script>
         function reloadPage() {
@@ -11,6 +13,25 @@
 <link rel="shortcut icon" href="image/mine.ico" type="image/x-icon">  
 <link rel="stylesheet" href="video-js.css">
 <script src="video.js"></script>
+<style>
+    .scrolling-text {
+      display: inline-block;
+      width: 80%;
+      white-space: nowrap;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    .scrolling-text span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll 10s linear infinite;
+    }
+   @keyframes scroll {
+      0% {transform: translateX(0);}
+      100% {transform: translateX(-100%);}
+    }
+  </style>
+
 <style>
         body, html {
             height: 100%;
@@ -138,13 +159,15 @@
         }
     </script>
     <style>
-    #marquee {
-        width: 250px;
-        height:fit-content
-        padding: 1px;
-        font-size: 15px;
-        overflow: hidden;
-    }
+   #rcorners0 	{
+  	 border-radius: 10px 70px;
+ 	 border: 2px solid #Ffff00;
+ 	 padding: 8px;
+ 	 width: 90%;
+	 height: 85%;
+	 align-items: center;
+	 background:#060403;
+	}
 	#rcorners1 	{
   	 border-radius: 10px 70px;
  	 border: 2px solid #73AD21;
@@ -163,47 +186,51 @@
 	 background:#060403;
 	}
 	</style>
-    
-        <script>
-            async function fetchData() {
-                const response = await fetch('data.json');
-                const data = await response.json();
-                displayDataInMarquee(data);
-            }
-    
-            function displayDataInMarquee(records) {
-                const marquee = document.getElementById('marquee');
-                let marqueeText = '';
-    
-                records.forEach(record => {
-                    marqueeText += `*** ${record.news} *** `;
-                });
-    
-                marquee.textContent = marqueeText;
-            }
-    
-            // Fetch and display data when the page loads
-            window.onload = fetchData;
-        </script>
-        <style>
-.button {
+   
+<style>
+		.button {
             
-background-color: black;
-color: white; /* Text color */
-border: 1px solid yellow;
-border-radius: 15px; 
-padding: 5px 20px; 
-cursor: pointer;
-align-content: center;
+		background-color: black;
+		color: white; /* Text color */
+		border: 1px solid yellow;
+		border-radius: 15px; 
+		padding: 5px 20px; 
+		cursor: pointer;
+		align-content: center;
 </style>
+
+<script>
+			async function fetchData() {
+  			const response = await fetch('data.json');
+  			const data = await response.json();
+  			displayDataInMarquee(data);
+}
+
+function displayDataInMarquee(records) {
+  const marquee = document.getElementById('marquee');
+  let marqueeText = '';
+  
+  records.forEach(record => {
+    marqueeText += `*** ${record.news} *** `;
+  });
+  
+  marquee.querySelector('span').innerText = marqueeText;
+}
+
+// Fetch and display data when the page loads
+window.onload = fetchData;
+</script>
+  
 </head>
 
-<body>
+<body id="rcorners0">
+
 <table>
   <tbody>
     <tr>
-     <td>
-	 <marquee id="marquee" behavior="scroll" direction="left"></marquee>
+     <td> <div class="scrolling-text" id="marquee">
+        <span>Placeholder text</span>
+      </div>
 </td>
     </tr>
     <tr>
