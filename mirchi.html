@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en"><head> 
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JKRadio</title>
- <script>
+<html lang="en">
+	
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JKRadio</title>
+    <script>
         function reloadPage() {
             location.reload();
         }
@@ -12,121 +13,123 @@
 <link rel="shortcut icon" href="image/mine.ico" type="image/x-icon">  
 <link rel="stylesheet" href="video-js.css">
 <script src="video.js"></script>
-<style>
-        body, html {
-            height: 100%;
+    <style>
+        body {
             margin: 0;
-            display: flex;
-            justify-content: center; /* Center horizontally */
-            align-items: center;    /* Center vertically */
-            text-align: center;     /* Center text */
-	        background-color: black; /* Set the background color to black */
-            color: white;          
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
         }
-        .content {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        .box {
+            border-radius: 10px 70px;
+			background-color: #00ff00;
+ 	 		font-family: Arial, sans-serif;
+            
+            color: black;
+			margin: 5px 0;
+            padding: 1px;
+            box-sizing: border-box;
+        }
+        table {
             width: 100%;
-        }
-    </style>
-<style>
-   .center-table {
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       height: 100vh; /* Adjusts height to fill the entire viewport */
-        }
-    table {
-			border-collapse: separate;
- 			border-spacing: 0;
- 			border: 2px solid #Ffff00;
- 			border-radius: 10px 70px;
- 		    overflow: hidden;
-            margin: auto; /* Centers the table horizontally */
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 20px;
+            border-radius: 10px 70px;
+ 	 		border: 2px solid #Ffff00;
+            overflow: hidden;
         }
         th, td {
-			border: none; 
-            outline: none; 
+             
             padding: 5px;
-            text-align: center; /* Centers text within table cells */
+            text-align: center;
         }
-    </style>
-<style>
-.button {
-            
-background-color: black;
-color: white; /* Text color */
-border: 1px solid yellow;
-border-radius: 15px; 
-padding: 5px 20px; 
-cursor: pointer;
-align-content: center;
-</style>
-<script>
-     function clearCache() {
-     if (confirm("This action will clear your browser's cache. Proceed?")) {
-     location.reload(true);
+        th:first-child, td:first-child {
+            border-top-left-radius: 50px;
+            border-bottom-left-radius: 50px;
+        }
+        th:last-child, td:last-child {
+            border-top-right-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            .box {
+                margin: 5px 0;
+                padding: -px;
             }
         }
-</script>
-<script>
-      function refreshPage() {
-      window.location.reload();
-        }
-    </script> 
- <style>
- #rcorners 	{
-  	 border-radius: 10px 25px;
+		
+    </style>
+    <script>
+            async function fetchData() {
+                const response = await fetch('data.json');
+                const data = await response.json();
+                displayDataInMarquee(data);
+            }
+    
+            function displayDataInMarquee(records) {
+                const marquee = document.getElementById('marquee');
+                let marqueeText = '';
+    
+                records.forEach(record => {
+                    marqueeText += `| ${record.news}`;
+                });
+    
+                marquee.textContent = marqueeText;
+            }
+    
+            // Fetch and display data when the page loads
+            window.onload = fetchData;
+        </script>
+<style>
+	#rcorners1	{
+  	 border-radius: 10px 70px;
  	 border: 2px solid #73AD21;
- 	 padding: 1px;
- 	 width: 255px; 
- 	 height: 80px;
-	 align-items: center;
-		}
+ 	 padding: 5px;
+ 	 
+	}
+	#rcorners2	{
+  	 border-radius: 15px 15px;
+ 	 border: 4px solid #36454F;
+ 	 padding: 5px;
+ 	 
+	}
+	#rcorners3	{
+  	 border-radius: 10px 70px;
+ 	 border: 4px solid #36454F;
+ 	 padding: 5px;
+ 	 
+	}
+</style>
 
-#rcorners1 	{
-  	 border-radius: 10px 70px;
- 	 border: 2px solid #Ffff00;
- 	 padding: 8px;
- 	 width: 90%;
-	 height: 85%;
-	 align-items: center;
-	 background:#060403;
-	}
-#rcorners11 	{
-  	 border-radius: 10px 70px;
- 	 border: 4px solid #73AD21;
- 	 padding: 8px;
- 	 width: 90%;
-	 height: 85%;
-	 align-items: center;
-	 background:#060403;
-	}
-#rcorners2 	{
-  	    overflow: hidden;
-		width: 100%;
-	     
-  		border-radius: 40px; 
-  		
- 		background:#Ffff00;
-		text-align: center;
-		}
-#rcorners12 	{
-  	 border-radius: 10px 70px;
- 	 border: 2px solid #Ffff00;
- 	 padding: 0px;
- 	
-	 align-items: center;
-	 background:#060403;
-	}
- </style>
-     
+<style>
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+            animation: marquee 15s linear infinite;
+        }
 
- <!-- Style Sheet for clock-->
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+</style>
+<!-- Style Sheet for clock-->
    <style>
      #clock{
           background-image: linear-gradient(to right, rgb(0,0,0)50%, rgb(204,0,0)51%);
           font-family: Arial;
-          Color:white;
-          font-size:40px;
+          Color: white;
+          font-size: 40px;
           text-align: center;
           width:100%;
           height:auto;
@@ -139,8 +142,8 @@ align-content: center;
     .date {
          background-image: linear-gradient(to left, rgb(0,0,0)50%, rgb(204,0,0)51%);
            font-family: Arial;
-           Color:white;
-           font-size:25px;
+           Color: white;
+           font-size: 30px;
            text-align: center;
            border: 0px solid Blue;
            border-radius: 10px;
@@ -149,24 +152,15 @@ align-content: center;
 
     .td {
   background:linear-gradient(to right,  rgb(221,255,204) 50%, rgb(201,255,229) 51%);
-  border-radius: 60px;
+  border-radius: 50px;
    
 	}
  
-.tbl 	{
-         	 
-		overflow: hidden;
-		width: 100%;
-		 
-  		border-radius: 50px; 
-  		border-spacing: 0;
- 		background:#Ffff00;
-		text-align: center;
-		 
-	}
-
+ 
+.yellow-column {
+            background-color: yellow;
+        }
 </style>
-  
 <style>
         ul {
             border-radius: 10px 40px;
@@ -210,19 +204,30 @@ align-content: center;
         }
     </script>
     <style>
-        table {
-            border: 0;
-        }
-    </style>
-     </head> 
-<body id="rcorners1"> 
-               
- 
- <table  id="rcorners12">
- <tr><td></td><td style="font-size: 15px; "><p id="rcorners11"  >RADIO MIRCHI</p></td><td></td></tr>
-<tr>
-<td></td>
-<td id="rcorners2">
+.button {
+            
+background-color: black;
+color: white; /* Text color */
+border: 1px solid yellow;
+border-radius: 15px; 
+padding: 5px 20px; 
+cursor: pointer;
+align-content: center;
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+        <div id="marquee" class="marquee "></div> 
+        </div>
+         
+<table>
+         
+            <tr>
+                <td style="font-size: 15px; "><p id="rcorners1"  >RADIO <br>MIRCHI</p></td>
+            </tr>
+            <tr>
+              <td id="rcorners2">
 	  <video
     id="my-video"
     class="video-js"
@@ -236,16 +241,9 @@ align-content: center;
 	src="https://playerservices.streamtheworld.com/api/livestream-redirect/NJS_HIN_ESTAAC.m3u8" >
     </video>
 </td>
-<td></td>
-</tr>
- <tr>
-   <td></td>
-   <td></td>
-   <td></td>
- </tr>
- <tr>
-   <td></td>
-   <td class="tbl"><label class="date" id="datee"></label>
+            </tr>
+            <tr>
+              <td class="yellow-column"><label class="date" id="datee"></label>
 	<br>
      <label  class="clock" id="clock">8:10:45</label>
  <script>
@@ -285,22 +283,15 @@ document.getElementById("datee").innerHTML = d.toDateString();
  		showTime();
 
     </script></td>
-   <td></td>
- </tr>
- <tr>
-   <td></td>
-   <td></td>
-   <td></td>
- </tr>
- <tr>
-   <td></td>
-   <td> 
+            </tr>
+            <tr>
+                <td> 
       <ul>
        <li>
-        <a style="font-size:15px;" href="javascript:void(0);" onclick="toggleMenu('services')">STATIONS ➕</a>
+      <a style="font-size:15px;" href="javascript:void(0);" onclick="toggleMenu('services')">STATIONS ➕</a>
         <ul id="services" class="submenu">
                   
-          <li><a href="index.html">Home 🏠VB </a></li>
+          <li><a href="index.html">Home  🏠  VB </a></li>
           <li><a href="aajtak.html">AAJ_TAK HD News</a></li>
           <li><a href="rainbow.html">Air Rainbow 103.4 FM</a></li>
           <li><a href="wait.html">Wait</a></li>
@@ -308,40 +299,26 @@ document.getElementById("datee").innerHTML = d.toDateString();
           </ul>
         </li>
     </ul></td>
-   <td></td>
- </tr>
-  
-   
- <tr><td> 
-  
+            </tr>
+            <tr>
+                <td>
+<img src="image/jkpic1.jpg" width="60" height="70"  alt="JKRadio">
 </td>
-<td>
-<img src="image/jkpic1.jpg" width="70" height="80"  alt="JKRadio">
-</td>
-<td>
-</td></tr>
-<tr>
-<td>
-</td>
-<td>JATINDER
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td>
-</td>
-<td> <button class="button" onclick="reloadPage()"><img src="image/refresh.jpg" width="35" height="35"  alt="Reload">
-	</button>
-</td>
-<td>
-</td>
-</tr>	
-</table>
-   
- 
-		 
- <script>
+            </tr>
+            <tr>
+               <td> <button class="button" onclick="reloadPage()"><img src="image/refresh.jpg" width="35" height="35"  alt="Reload">
+				   </button></td>
+            </tr>
+            <tr>
+               	<td style="font-size: 11px"> JATINDER
+		</td>
+            </tr>
+            
+           
+           
+		</table>
+	</div> 
+	<script>
       if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js');
 }
@@ -352,7 +329,6 @@ document.querySelector('#show').addEventListener('click', () => {
   imgElement.src = iconUrl;
   document.querySelector('#container').appendChild(imgElement);
 });
-    </script>
-   
+    </script> 
 </body>
 </html>
