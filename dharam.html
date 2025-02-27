@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JKRadio</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script>
         function reloadPage() {
             location.reload();
@@ -224,21 +225,28 @@ align-content: center;
 <table>
          
             <tr>
-                <td style="font-size: 15px; "><p id="rcorners1"  >RADIO <br>VIVIDH BHARTI</p></td>
+                <td style="font-size: 15px; "><p id="rcorners1"  >AKASHWANI <br>DHARAMSHALA</p></td>
             </tr>
             <tr>
                <td id="rcorners2">
-	  <video
-    id="my-video"
-    class="video-js"
-    controls
-    preLoad="auto"
-    width= "250"
-    height="60"
-    data-setup="{}"
-    >
-   <source type="application/x-mpegURL" src="https://air.pc.cdn.bitgravity.com/air/live/pbaudio001/playlist.m3u8">
-    </video>
+	 <video id="video" controls width="300" height="40"></video>
+    <script>
+        if (Hls.isSupported()) {
+            var video = document.getElementById('video');
+            var hls = new Hls();
+            hls.loadSource('https://air.pc.cdn.bitgravity.com/air/live/pbaudio165/playlist.m3u8');
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED,function() {
+                video.play();
+            });
+        }
+        else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = 'https://air.pc.cdn.bitgravity.com/air/live/pbaudio165/playlist.m3u8';
+            video.addEventListener('canplay',function() {
+                video.play();
+            });
+        }
+    </script>
 </td>
             </tr>
             <tr>
@@ -289,11 +297,11 @@ document.getElementById("datee").innerHTML = d.toDateString();
        <li>
  <a style="font-size:15px;" href="javascript:void(0);" onclick="toggleMenu('services')">STATIONS ➕</a>
         <ul id="services" class="submenu">
-                  
+             <li><a href="index.html">Home 🏠 VB</a></li>     
           <li><a href="mirchi.html">Radio Mirchi</a></li>
           <li><a href="aajtak.html">AAJ_TAK HD News</a></li>
           <li><a href="rainbow.html">Air Rainbow 103.4 FM</a></li>
-         <li><a href="dharam.html">DHARAMSHALA</a></li>
+          
           </ul>
         </li>
     </ul></td>
