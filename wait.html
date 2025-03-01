@@ -122,6 +122,36 @@
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
+	
+	  .marquee-text {
+  overflow: clip;
+}
+
+.marquee-text-track {
+  display: flex;
+  padding-left: 4.8rem;
+  gap: 4.8rem;
+  width: max-content;
+  animation: marquee-move-text var(--speed, 10s) linear infinite var(
+      --direction,
+      forwards
+    );
+}
+
+.marquee-text p {
+  border: 1px solid red;
+  background-color: #141414;
+  color: white;
+  border-radius: 999px;
+  padding: 1rem 2.5rem;
+}
+
+@keyframes marquee-move-text {
+  to {
+    transform: translateX(-50%);
+  }
+}
+    </style>
 </style>
 <!-- Style Sheet for clock-->
    <style>
@@ -313,6 +343,24 @@ document.getElementById("datee").innerHTML = d.toDateString();
            
            
 		</table>
+		 <div class="marquee-text">
+  <div class="marquee-text-track">
+    <p>JKRadio</p>
+    <p>Vividh Bharti</p>
+    <p>Radio Mirchi </p>
+    <p>Radio Rainbow</p>
+    <p>AAJTak  News</p>
+    <p>Dharamshala</p>
+    
+    <p aria-hidden="true">JKRadio</p>
+    <p aria-hidden="true">Vividh Bharti</p>
+    <p aria-hidden="true">Radio Mirchi </p>
+    <p aria-hidden="true">Radio Rainbow</p>
+    <p aria-hidden="true">AAJTak  News</p>
+    <p aria-hidden="true">Dharamshala</p>
+     
+  </div>
+</div>
 	</div> 
 	<script>
       if ('serviceWorker' in navigator) {
