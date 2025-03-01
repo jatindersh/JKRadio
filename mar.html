@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href=" js/marquee-plug.css" />
+		<title>MarqueePlug Example</title>
+	</head>
+	<body>
+		<div class="marquee-container">
+			<h1 class="demo-text">MarqueePlug Example 1</h1>
+			<h1 class="demo-text">MarqueePlug Example 2</h1>
+			<h1 class="demo-text">MarqueePlug Example 3</h1>
+			<h1 class="demo-text">MarqueePlug Example 4</h1>
+		</div>
+
+		<script src="file:///C|/Users/jatin/OneDrive/dist/marquee-plug.min.js"></script>
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				const container = document.querySelector('.marquee-container');
+				const marquee = new MarqueePlug(container, {
+					autoFill: true,
+					speed: 30,
+					loop: 1,
+					direction: 'left',
+					pauseOnHover: true,
+					gradient: true,
+				});
+			});
+		</script>
+		<style>
+			.demo-text {
+				font-size: 30px;
+				margin: 0 10px;
+				white-space: nowrap;
+			}
+		</style>
+	</body>
+</html>
