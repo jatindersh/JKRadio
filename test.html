@@ -84,12 +84,8 @@
   border-radius: 999px;
   padding: 1rem 2.5rem;
 }
-	 .marquee-text b {
-  border: 1px solid red;
-  background-color: black;
-  color: white;
-   
-}
+	 
+ 
 
 @keyframes marquee-move-text {
   to {
@@ -97,7 +93,60 @@
   }
 }
 	</style>
- 
+ <style>   
+	 ul, li {
+            list-style: none;
+        }
+    .marquee {
+            margin: 0 auto;
+            max-width: 960px;
+            overflow: hidden;
+        }
+
+        .marquee h2 {
+            margin-bottom: 20px;
+        }
+
+        .marquee ul.flex {
+            display: flex;
+            align-items: center;
+        }
+
+        .marquee ul.flex li {
+            flex-shrink: 0;
+            width:  100px;
+            height:  100px;
+            border-radius:20px;
+            line-height: 100px;
+            text-align: center;
+            font-size: 15px;
+            color: #fff;
+            background-image:linear-gradient(135deg, #800080 15%, #000000 100%)
+        }
+
+        .marquee-wrapper {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .marquee-h {
+            
+            overflow: hidden;
+        }
+
+        .marquee-h .marquee-wrapper {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .marquee-h ul li {
+            padding: 20px 0;
+            text-align: center;
+            color: #fff;
+            font-size: 38px;
+            background-image:linear-gradient(#1e3c72 ,#2a5298 100%)
+        }
+	</style>
 	 </head>
 <body>
  <div id="main-content">
@@ -121,11 +170,7 @@
      
   </div>
 	 </div>
-	    
-   <div class="marquee-text-track"><p>ICL Recognized  Affiliated BY SARVA EDUCATION License by Central Govt.ofIndia , Vide Lic. No.2/114/T- .</p>
-           <p aria-hidden="true">ICL Recognized  Affiliated BY SARVA EDUCATION License by Central Govt.ofIndia , Vide Lic. No.2/114/T- </p>
-      
-       </div>     
+	     
             <table>
                 <thead>
                     <tr>
@@ -136,20 +181,61 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Row 1, Cell 1</td>
-                        <td>Row 1, Cell 2</td>
-                        <td>Row 1, Cell 3</td>
+                        <td colspan="3">merged
+                         </td>
                     </tr>
                     <tr>
                         <td>Row 2, Cell 1</td>
                         <td>Row 2, Cell 2</td>
+                        <td>Row 2, Cell 3</td>
                         <td></td>
                     </tr>
                     <!-- Add more rows as needed -->
                 </tbody>
-            </table><br>
-  
+            </table> 
+            <br>
+   <div class="marquee">
+         <div class="marquee-wrapper" id="marqueeLeft">
+            <ul class="flex">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>4</li>
+                <li>5</li>
+               
+            </ul>
         </div>
-        <script>  
+    </div>
+        </div>
+         <script src="jq1.js"></script>
+    <script src="jq2.js"></script>
+    <script>
+        $(function() {
+            $("#marqueeLeft").marquee();
+            
+            $("#marqueeRight").marquee({
+                direction: 'right',
+                speed: 15,
+                spaceBetween: 15,
+                pausehover: true
+            });
+            
+            $("#marqueeUP").marquee({
+                direction: 'up',
+                pausehover: true
+            });
+
+            $("#marqueeDown").marquee({
+                direction: 'down'
+            })
+        });
+    </script>
   </body>
 </html>

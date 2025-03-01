@@ -1,39 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href=" js/marquee-plug.css" />
-		<title>MarqueePlug Example</title>
-	</head>
-	<body>
-		<div class="marquee-container">
-			<h1 class="demo-text">MarqueePlug Example 1</h1>
-			<h1 class="demo-text">MarqueePlug Example 2</h1>
-			<h1 class="demo-text">MarqueePlug Example 3</h1>
-			<h1 class="demo-text">MarqueePlug Example 4</h1>
-		</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marquee.js Seamless Content Scrolling Demos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-		<script src="file:///C|/Users/jatin/OneDrive/dist/marquee-plug.min.js"></script>
-		<script>
-			document.addEventListener('DOMContentLoaded', () => {
-				const container = document.querySelector('.marquee-container');
-				const marquee = new MarqueePlug(container, {
-					autoFill: true,
-					speed: 30,
-					loop: 1,
-					direction: 'left',
-					pauseOnHover: true,
-					gradient: true,
-				});
-			});
-		</script>
-		<style>
-			.demo-text {
-				font-size: 30px;
-				margin: 0 10px;
-				white-space: nowrap;
-			}
-		</style>
-	</body>
+        body {
+            padding: 15px;
+            font-family: Inter;
+            background: #fafaf7;
+        }
+
+
+        ul, li {
+            list-style: none;
+        }
+
+
+        .marquee {
+            margin: 0 auto;
+            max-width: 960px;
+            overflow: hidden;
+        }
+
+        .marquee h2 {
+            margin-bottom: 20px;
+        }
+
+        .marquee ul.flex {
+            display: flex;
+            align-items: center;
+        }
+
+        .marquee ul.flex li {
+            flex-shrink: 0;
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            line-height: 70px;
+            text-align: center;
+            font-size: 15px;
+            color: #fff;
+            background-image:linear-gradient(135deg, #800080 15%, #000000 100%); /* Purple to black */
+        }
+
+        .marquee-wrapper {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .marquee-h {
+            
+            overflow: hidden;
+        }
+
+        .marquee-h .marquee-wrapper {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .marquee-h ul li {
+            padding: 20px 0;
+            text-align: center;
+            color: #fff;
+            font-size: 38px;
+            background-image: linear-gradient(#000000, #800000 100%);
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+     
+        
+    <div class="marquee">
+        <h2>From Right To Left</h2>
+        <div class="marquee-wrapper" id="marqueeLeft">
+            <ul class="flex">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                
+            </ul>
+        </div>
+    </div>
+    <br><br>
+    <div class="marquee">
+        <h2>From Left To Right</h2>
+        <div class="marquee-wrapper" id="marqueeRight">
+            <ul class="flex">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                 <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                
+            </ul>
+        </div>
+    </div>
+    <br><br>
+    <div class="marquee marquee-h">
+        <h2>From Bottom To Top</h2>
+        <div class="marquee-wrapper" id="marqueeUP">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                
+            </ul>
+        </div>
+    </div>
+    <br><br>
+    <div class="marquee marquee-h">
+        <h2>From Top To Bottom</h2>
+        <div class="marquee-wrapper" id="marqueeDown">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+               
+            </ul>
+        </div>
+    </div></div>
+    <script src="jq1.js"></script>
+    <script src="jq2.js"></script>
+    <script>
+        $(function() {
+            $("#marqueeLeft").marquee({
+                direction: 'left',
+                speed: 15,
+                spaceBetween: 15,
+                pausehover: true
+            });
+            
+            $("#marqueeRight").marquee({
+                direction: 'right',
+                speed: 15,
+                spaceBetween: 15,
+                pausehover: true
+            });
+            
+            $("#marqueeUP").marquee({
+                direction: 'up',
+                pausehover: true
+            });
+
+            $("#marqueeDown").marquee({
+                direction: 'down'
+            })
+        });
+    </script>
+
+</body>
 </html>
